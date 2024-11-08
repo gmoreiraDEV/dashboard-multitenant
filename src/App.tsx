@@ -22,12 +22,12 @@ const simulateLogin = () => {
 function App() {
   const { user } = useAuthStore();
 
-  // Auto-login for demo
-  React.useEffect(() => {
-    if (!user) {
-      simulateLogin();
-    }
-  }, [user]);
+  // // Auto-login for demo
+  // React.useEffect(() => {
+  //   if (!user) {
+  //     simulateLogin();
+  //   }
+  // }, [user]);
 
   return (
     <BrowserRouter>
