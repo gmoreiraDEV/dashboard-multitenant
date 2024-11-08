@@ -8,6 +8,7 @@ import {
   LogOut,
   Building2,
 } from 'lucide-react';
+import { cn } from '../lib/utils';
 
 const Layout = () => {
   const { user, hasPermission } = useAuthStore();
