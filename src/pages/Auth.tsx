@@ -68,6 +68,7 @@ const Auth = () => {
                     {...register("name", { required: true })}
                     className="block w-full p-3 sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                   />
+                  {errors && errors.name && <p>The field name is necessary.</p>}
                 </div>
               </div>
 
@@ -83,6 +84,7 @@ const Auth = () => {
                     {...register("company", { required: true })}
                     className="block w-full p-3 sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
                   />
+                  {errors && errors.company && <p>The field company is necessary.</p>}
                 </div>
               </div>
             </>
@@ -102,6 +104,7 @@ const Auth = () => {
                 {...register("email", { required: true })}
                 className="block w-full p-3 sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
               />
+              {errors && errors.email && <p>The field email is necessary.</p>}
             </div>
           </div>
 
@@ -119,6 +122,7 @@ const Auth = () => {
                 {...register("password", { required: true })}
                 className="block w-full p-3 sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
               />
+              {errors && errors.password && <p>The field password is necessary.</p>}
             </div>
           </div>
 

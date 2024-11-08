@@ -9,7 +9,8 @@ import {
     updateDoc,
     deleteDoc,
     doc,
-    DocumentData
+    DocumentData,
+    WhereFilterOp
   } from 'firebase/firestore';
   import { db } from '../lib/firebase';
   import { useAuthStore } from '../store/authStore';
@@ -18,7 +19,7 @@ import {
     const { user } = useAuthStore();
   
     const getDocuments = async (
-      conditions: { field: string; operator: string; value: any }[] = [],
+      conditions: { field: string; operator: string; value: unknown }[] = [],
       sortBy?: { field: string; direction: 'asc' | 'desc' },
       limitTo?: number
     ) => {
@@ -30,7 +31,7 @@ import {
   
         // Add additional query conditions
         conditions.forEach(({ field, operator, value }) => {
-          q = query(q, where(field, operator as any, value));
+          q = query(q, where(field, operator as WhereFilterOp, value));
         });
   
         // Add sorting if specified

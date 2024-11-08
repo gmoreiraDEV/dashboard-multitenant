@@ -87,7 +87,7 @@ const KanbanBoard = () => {
                       {columns.map((col) => (
                         <button
                           key={col.id}
-                          onClick={() => moveTask(task.id, col.id as any)}
+                          onClick={() => moveTask(task.id, col.id as never)}
                           disabled={task.status === col.id}
                           className={`px-2 py-1 text-xs rounded ${
                             task.status === col.id

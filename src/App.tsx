@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Auth from './pages/Auth';
 import Layout from './components/Layout';
@@ -8,26 +7,9 @@ import ContentCRM from './pages/ContentCRM';
 import BudgetTracker from './pages/BudgetTracker';
 import { useAuthStore } from './store/authStore';
 
-// Simulated login for demo purposes
-const simulateLogin = () => {
-  useAuthStore.getState().setUser({
-    id: '1',
-    name: 'Demo User',
-    email: 'demo@example.com',
-    roles: ['admin', 'sales', 'content', 'finance'],
-    tenantId: 'ACME Corp'
-  });
-};
 
 function App() {
   const { user } = useAuthStore();
-
-  // // Auto-login for demo
-  // React.useEffect(() => {
-  //   if (!user) {
-  //     simulateLogin();
-  //   }
-  // }, [user]);
 
   return (
     <BrowserRouter>
