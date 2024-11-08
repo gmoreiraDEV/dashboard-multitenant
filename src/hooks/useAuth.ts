@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
-import { 
+import { useState, useEffect } from "react";
+import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
   GoogleAuthProvider,
-  signInWithPopup
-} from 'firebase/auth';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
-import { auth, db } from '../lib/firebase';
-import { useAuthStore } from '../store/authStore';
+  signInWithPopup,
+} from "firebase/auth";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { auth, db } from "../lib/firebase";
+import { useAuthStore } from "../store/authStore";
 
 export function useAuth() {
   const [loading, setLoading] = useState(true);
@@ -19,15 +19,15 @@ export function useAuth() {
   useEffect(() => {
     return onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        const userDoc = await getDoc(doc(db, "users", user.uid));
         const userData = userDoc.data();
-        
+
         setUser({
           id: user.uid,
-          name: userData?.name || user.displayName || 'User',
-          email: user.email || '',
-          roles: userData?.roles || ['user'],
-          tenantId: userData?.tenantId || 'Default'
+          name: userData?.name || user.displayName || "User",
+          email: user.email || "",
+          roles: userData?.roles || ["user"],
+          tenantId: userData?.tenantId || "Default",
         });
       } else {
         setUser(null);
@@ -46,18 +46,27 @@ export function useAuth() {
     }
   };
 
-  const signUp = async (email: string, password: string, name: string, tenantId: string) => {
+  const signUp = async (
+    email: string,
+    password: string,
+    name: string,
+    tenantId: string
+  ) => {
     try {
       setError(null);
-      const { user } = await createUserWithEmailAndPassword(auth, email, password);
-      
+      const { user } = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
       // Create user document in Firestore
-      await setDoc(doc(db, 'users', user.uid), {
+      await setDoc(doc(db, "users", user.uid), {
         name,
         email,
         tenantId,
-        roles: ['user'],
-        createdAt: new Date().toISOString()
+        roles: ["user"],
+        createdAt: new Date().toISOString(),
       });
     } catch (err) {
       setError((err as Error).message);
@@ -70,18 +79,18 @@ export function useAuth() {
       setError(null);
       const provider = new GoogleAuthProvider();
       const { user } = await signInWithPopup(auth, provider);
-      
+
       // Check if user document exists
-      const userDoc = await getDoc(doc(db, 'users', user.uid));
-      
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+
       if (!userDoc.exists()) {
         // Create user document if it doesn't exist
-        await setDoc(doc(db, 'users', user.uid), {
+        await setDoc(doc(db, "users", user.uid), {
           name: user.displayName,
           email: user.email,
-          tenantId: 'Default',
-          roles: ['user'],
-          createdAt: new Date().toISOString()
+          tenantId: "Default",
+          roles: ["user"],
+          createdAt: new Date().toISOString(),
         });
       }
     } catch (err) {
@@ -106,6 +115,6 @@ export function useAuth() {
     signIn,
     signUp,
     signInWithGoogle,
-    logout
+    logout,
   };
 }

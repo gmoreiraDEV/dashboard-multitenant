@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useAuthStore } from '../store/authStore';
+import { useState } from "react";
+import { useAuthStore } from "../store/authStore";
 import {
   DollarSign,
   TrendingUp,
@@ -8,22 +8,21 @@ import {
   BarChart,
   ArrowUpRight,
   ArrowDownRight,
-} from 'lucide-react';
-import { formatCurrency } from '../lib/utils';
+} from "lucide-react";
+import { formatCurrency } from "../lib/utils";
 
 const BudgetTracker = () => {
   const { hasPermission } = useAuthStore();
+  const [expenses] = useState([
+    { id: 1, category: "Marketing", amount: 12500, change: 8 },
+    { id: 2, category: "Sales Tools", amount: 8750, change: -3 },
+    { id: 3, category: "Content Creation", amount: 6300, change: 12 },
+    { id: 4, category: "Team Training", amount: 4500, change: 5 },
+  ]);
 
-  if (!hasPermission('finance')) {
+  if (!hasPermission("finance")) {
     return <div>Access denied</div>;
   }
-
-  const [expenses] = useState([
-    { id: 1, category: 'Marketing', amount: 12500, change: 8 },
-    { id: 2, category: 'Sales Tools', amount: 8750, change: -3 },
-    { id: 3, category: 'Content Creation', amount: 6300, change: 12 },
-    { id: 4, category: 'Team Training', amount: 4500, change: 5 },
-  ]);
 
   const totalBudget = 45000;
   const totalSpent = expenses.reduce((acc, curr) => acc + curr.amount, 0);
@@ -193,11 +192,11 @@ const BudgetTracker = () => {
                       <span
                         className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                           expense.change > 0
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-red-100 text-red-800'
+                            ? "bg-green-100 text-green-800"
+                            : "bg-red-100 text-red-800"
                         }`}
                       >
-                        {expense.change > 0 ? '+' : ''}
+                        {expense.change > 0 ? "+" : ""}
                         {expense.change}%
                       </span>
                     </td>

@@ -1,12 +1,11 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Auth from './pages/Auth';
-import Layout from './components/Layout';
-import Dashboard from './pages/Dashboard';
-import SalesCRM from './pages/SalesCRM';
-import ContentCRM from './pages/ContentCRM';
-import BudgetTracker from './pages/BudgetTracker';
-import { useAuthStore } from './store/authStore';
-
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Auth from "./pages/Auth";
+import Layout from "./components/Layout";
+import Dashboard from "./pages/Dashboard";
+import SalesCRM from "./pages/SalesCRM";
+import ContentCRM from "./pages/ContentCRM";
+import BudgetTracker from "./pages/BudgetTracker";
+import { useAuthStore } from "./store/authStore";
 
 function App() {
   const { user } = useAuthStore();

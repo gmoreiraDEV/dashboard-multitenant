@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useAuthStore } from '../store/authStore';
+import { useState } from "react";
+import { useAuthStore } from "../store/authStore";
 import {
   Users,
   Search,
@@ -8,7 +8,7 @@ import {
   Phone,
   Mail,
   Calendar,
-} from 'lucide-react';
+} from "lucide-react";
 
 interface Lead {
   id: string;
@@ -16,45 +16,43 @@ interface Lead {
   company: string;
   email: string;
   phone: string;
-  status: 'new' | 'contacted' | 'qualified' | 'proposal' | 'closed';
+  status: "new" | "contacted" | "qualified" | "proposal" | "closed";
   value: number;
 }
 
 const SalesCRM = () => {
   const { hasPermission } = useAuthStore();
-
-  if (!hasPermission('sales')) {
-    return <div>Access denied</div>;
-  }
-
   const [leads] = useState<Lead[]>([
     {
-      id: '1',
-      name: 'John Smith',
-      company: 'Tech Corp',
-      email: 'john@techcorp.com',
-      phone: '(555) 123-4567',
-      status: 'new',
+      id: "1",
+      name: "John Smith",
+      company: "Tech Corp",
+      email: "john@techcorp.com",
+      phone: "(555) 123-4567",
+      status: "new",
       value: 25000,
     },
     {
-      id: '2',
-      name: 'Sarah Johnson',
-      company: 'Digital Solutions',
-      email: 'sarah@digitalsolutions.com',
-      phone: '(555) 234-5678',
-      status: 'contacted',
+      id: "2",
+      name: "Sarah Johnson",
+      company: "Digital Solutions",
+      email: "sarah@digitalsolutions.com",
+      phone: "(555) 234-5678",
+      status: "contacted",
       value: 50000,
     },
-    // Add more sample leads as needed
   ]);
 
+  if (!hasPermission("sales")) {
+    return <div>Access denied</div>;
+  }
+
   const statusColors = {
-    new: 'bg-blue-100 text-blue-800',
-    contacted: 'bg-yellow-100 text-yellow-800',
-    qualified: 'bg-green-100 text-green-800',
-    proposal: 'bg-purple-100 text-purple-800',
-    closed: 'bg-gray-100 text-gray-800',
+    new: "bg-blue-100 text-blue-800",
+    contacted: "bg-yellow-100 text-yellow-800",
+    qualified: "bg-green-100 text-green-800",
+    proposal: "bg-purple-100 text-purple-800",
+    closed: "bg-gray-100 text-gray-800",
   };
 
   return (

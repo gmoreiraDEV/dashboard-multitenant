@@ -1,4 +1,4 @@
-import { useAuthStore } from '../store/authStore';
+import { useAuthStore } from "../store/authStore";
 import {
   Users,
   FileText,
@@ -6,19 +6,19 @@ import {
   TrendingUp,
   ListTodo,
   Target,
-} from 'lucide-react';
+} from "lucide-react";
 
 const Dashboard = () => {
   const { user } = useAuthStore();
 
   const stats = [
-    { name: 'Total Leads', value: '2,651', icon: Users, change: '+12%' },
-    { name: 'Content Tasks', value: '42', icon: ListTodo, change: '+8%' },
+    { name: "Total Leads", value: "2,651", icon: Users, change: "+12%" },
+    { name: "Content Tasks", value: "42", icon: ListTodo, change: "+8%" },
     {
-      name: 'Monthly Budget',
-      value: '$45,200',
+      name: "Monthly Budget",
+      value: "$45,200",
       icon: DollarSign,
-      change: '+3%',
+      change: "+3%",
     },
   ];
 
@@ -69,13 +69,13 @@ const Dashboard = () => {
           <div className="flow-root">
             <ul className="-mb-8">
               {[
-                { title: 'New lead captured', time: '3m ago', icon: Target },
+                { title: "New lead captured", time: "3m ago", icon: Target },
                 {
-                  title: 'Content task completed',
-                  time: '1h ago',
+                  title: "Content task completed",
+                  time: "1h ago",
                   icon: FileText,
                 },
-                { title: 'Budget updated', time: '2h ago', icon: DollarSign },
+                { title: "Budget updated", time: "2h ago", icon: DollarSign },
               ].map((item, idx) => (
                 <li key={idx}>
                   <div className="relative pb-8">
@@ -113,17 +113,17 @@ const Dashboard = () => {
           </h2>
           <div className="grid grid-cols-2 gap-4">
             {[
-              { name: 'Add Lead', icon: Users, color: 'bg-blue-500' },
-              { name: 'New Task', icon: ListTodo, color: 'bg-green-500' },
+              { name: "Add Lead", icon: Users, color: "bg-blue-500" },
+              { name: "New Task", icon: ListTodo, color: "bg-green-500" },
               {
-                name: 'Update Budget',
+                name: "Update Budget",
                 icon: DollarSign,
-                color: 'bg-yellow-500',
+                color: "bg-yellow-500",
               },
               {
-                name: 'Create Content',
+                name: "Create Content",
                 icon: FileText,
-                color: 'bg-purple-500',
+                color: "bg-purple-500",
               },
             ].map((action) => (
               <button

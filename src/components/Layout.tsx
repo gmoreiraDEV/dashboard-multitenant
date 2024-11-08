@@ -1,5 +1,5 @@
-import { Link, Outlet, useLocation, Navigate } from 'react-router-dom';
-import { useAuthStore } from '../store/authStore';
+import { Link, Outlet, useLocation, Navigate } from "react-router-dom";
+import { useAuthStore } from "../store/authStore";
 import {
   LayoutDashboard,
   Users,
@@ -7,8 +7,8 @@ import {
   DollarSign,
   LogOut,
   Building2,
-} from 'lucide-react';
-import { cn } from '../lib/utils';
+} from "lucide-react";
+import { cn } from "../lib/utils";
 
 const Layout = () => {
   const { user, hasPermission } = useAuthStore();
@@ -19,24 +19,24 @@ const Layout = () => {
   }
 
   const navigation = [
-    { name: 'Dashboard', href: '/', icon: LayoutDashboard, permission: true },
+    { name: "Dashboard", href: "/", icon: LayoutDashboard, permission: true },
     {
-      name: 'Sales CRM',
-      href: '/sales',
+      name: "Sales CRM",
+      href: "/sales",
       icon: Users,
-      permission: hasPermission('sales'),
+      permission: hasPermission("sales"),
     },
     {
-      name: 'Content CRM',
-      href: '/content',
+      name: "Content CRM",
+      href: "/content",
       icon: FileText,
-      permission: hasPermission('content'),
+      permission: hasPermission("content"),
     },
     {
-      name: 'Budget',
-      href: '/budget',
+      name: "Budget",
+      href: "/budget",
       icon: DollarSign,
-      permission: hasPermission('finance'),
+      permission: hasPermission("finance"),
     },
   ];
 
@@ -62,9 +62,9 @@ const Layout = () => {
                         to={item.href}
                         className={cn(
                           location.pathname === item.href
-                            ? 'bg-indigo-50 text-indigo-600'
-                            : 'text-gray-600 hover:bg-gray-50',
-                          'group flex items-center px-2 py-2 text-sm font-medium rounded-md'
+                            ? "bg-indigo-50 text-indigo-600"
+                            : "text-gray-600 hover:bg-gray-50",
+                          "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
                         )}
                       >
                         <item.icon className="mr-3 h-5 w-5 flex-shrink-0" />

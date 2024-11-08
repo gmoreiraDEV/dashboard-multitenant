@@ -1,12 +1,12 @@
-import KanbanBoard from '../components/KanbanBoard';
-import { useAuthStore } from '../store/authStore';
+import KanbanBoard from "../components/KanbanBoard";
+import { useAuthStore } from "../store/authStore";
 
-import { Calendar, ListTodo, FileText, Users } from 'lucide-react';
+import { Calendar, ListTodo, FileText, Users } from "lucide-react";
 
 const ContentCRM = () => {
   const { hasPermission } = useAuthStore();
 
-  if (!hasPermission('content')) {
+  if (!hasPermission("content")) {
     return <div>Access denied</div>;
   }
 
@@ -24,28 +24,28 @@ const ContentCRM = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {[
           {
-            title: 'Total Tasks',
-            value: '24',
+            title: "Total Tasks",
+            value: "24",
             icon: ListTodo,
-            color: 'bg-blue-500',
+            color: "bg-blue-500",
           },
           {
-            title: 'In Progress',
-            value: '8',
+            title: "In Progress",
+            value: "8",
             icon: FileText,
-            color: 'bg-yellow-500',
+            color: "bg-yellow-500",
           },
           {
-            title: 'Completed',
-            value: '16',
+            title: "Completed",
+            value: "16",
             icon: Calendar,
-            color: 'bg-green-500',
+            color: "bg-green-500",
           },
           {
-            title: 'Team Members',
-            value: '6',
+            title: "Team Members",
+            value: "6",
             icon: Users,
-            color: 'bg-purple-500',
+            color: "bg-purple-500",
           },
         ].map((stat) => (
           <div

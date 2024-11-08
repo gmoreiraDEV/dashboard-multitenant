@@ -1,40 +1,40 @@
-import { useState } from 'react';
-import { Grip, Plus } from 'lucide-react';
+import { useState } from "react";
+import { Grip, Plus } from "lucide-react";
 
 interface Task {
   id: string;
   title: string;
-  status: 'todo' | 'inProgress' | 'done';
+  status: "todo" | "inProgress" | "done";
 }
 
 const KanbanBoard = () => {
   const [tasks, setTasks] = useState<Task[]>([
-    { id: '1', title: 'Create blog post', status: 'todo' },
-    { id: '2', title: 'Design social media graphics', status: 'inProgress' },
-    { id: '3', title: 'Review content strategy', status: 'done' },
+    { id: "1", title: "Create blog post", status: "todo" },
+    { id: "2", title: "Design social media graphics", status: "inProgress" },
+    { id: "3", title: "Review content strategy", status: "done" },
   ]);
 
-  const [newTask, setNewTask] = useState('');
+  const [newTask, setNewTask] = useState("");
 
   const columns = [
-    { id: 'todo', title: 'To Do', color: 'bg-gray-100' },
-    { id: 'inProgress', title: 'In Progress', color: 'bg-blue-50' },
-    { id: 'done', title: 'Done', color: 'bg-green-50' },
+    { id: "todo", title: "To Do", color: "bg-gray-100" },
+    { id: "inProgress", title: "In Progress", color: "bg-blue-50" },
+    { id: "done", title: "Done", color: "bg-green-50" },
   ];
 
   const addTask = () => {
     if (newTask.trim()) {
       setTasks([
         ...tasks,
-        { id: Date.now().toString(), title: newTask, status: 'todo' },
+        { id: Date.now().toString(), title: newTask, status: "todo" },
       ]);
-      setNewTask('');
+      setNewTask("");
     }
   };
 
   const moveTask = (
     taskId: string,
-    newStatus: 'todo' | 'inProgress' | 'done'
+    newStatus: "todo" | "inProgress" | "done"
   ) => {
     setTasks(
       tasks.map((task) =>
@@ -91,8 +91,8 @@ const KanbanBoard = () => {
                           disabled={task.status === col.id}
                           className={`px-2 py-1 text-xs rounded ${
                             task.status === col.id
-                              ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                              : 'bg-gray-100 hover:bg-gray-200 text-gray-600'
+                              ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                              : "bg-gray-100 hover:bg-gray-200 text-gray-600"
                           }`}
                         >
                           {col.title}

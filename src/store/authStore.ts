@@ -1,6 +1,6 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
-type Role = 'admin' | 'sales' | 'content' | 'finance';
+type Role = "admin" | "sales" | "content" | "finance";
 
 interface User {
   id: string;
@@ -21,6 +21,6 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   setUser: (user) => set({ user }),
   hasPermission: (role) => {
     const user = get().user;
-    return user?.roles.includes(role) || user?.roles.includes('admin') || false;
+    return user?.roles.includes(role) || user?.roles.includes("admin") || false;
   },
 }));
